@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1>STOPWATCH</h1>
+            <h2>Vanilla JavaScript Stopwatch</h2>
+            <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+            <button id="reset">Reset</button>
+        </div>
+        
+        <script type="text/javascript">
+
+            window.onload = function(){
+
+                var seconds = 00;
+                var tens = 00;
+
+                var appendSeconds = document.getElementById("seconds");
+                var appendTens = document.getElementById("tens");
+                var start = document.getElementById("start");
+                var stop = document.getElementById("stop");
+                var reset = document.getElementById("reset");
+                var Interval;
+    
+                    start.onclick = function(){
+                        clearInterval(Interval);
+                        Interval = setInterval(startTimer,10);
+                    }
+                    stop.onclick = function(){
+                        clearInterval(Interval);
+                    }
+                    reset.onclick = function() {
+                        clearInterval(Interval);
+                        tens = "00";
+                     	seconds = "00";
+                        appendTens.innerHTML = tens;
+                     	appendSeconds.innerHTML = seconds;
+                    }
+                    function startTimer () {
+                        tens++; 
+                        
+                        if(tens <= 9){
+                          appendTens.innerHTML = "0" + tens;
+                        }
+                        
+                        if (tens > 9){
+                          appendTens.innerHTML = tens;
+                          
+                        } 
+                        
+                        if (tens > 99) {
+                          //console.log("seconds");
+                          seconds++;
+                          appendSeconds.innerHTML = "0" + seconds;
+                          tens = 0;
+                          appendTens.innerHTML = "0" + 0;
+                        }
+                        
+                        if (seconds > 9){
+                          appendSeconds.innerHTML = seconds;
+                        }
+                      
+                    }                    
+  
+                }
+        </script>
+    </body>
+</html>

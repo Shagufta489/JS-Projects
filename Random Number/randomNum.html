@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Guess the number</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <style type="text/css" >
+
+            body{
+                margin: 0;
+                padding: 0;
+                background-color: bisque;
+                font-family: cursive;
+            }
+            #title{
+                font-size: 70px;
+                color: coral;
+                text-align: center;
+                text-decoration: underline;
+                text-shadow: 5px 5px black;
+            }
+            h2{
+                font-size: 35px;
+                font-weight: bold;
+                text-align: center;
+                margin-top: 100px;
+            }
+            .input{
+                text-align: center;
+            }
+            #num{
+                background-color: darksalmon;
+                height: 40px;
+                width: 150px;
+                text-align: center;
+                font-size: 25px;
+                font-weight: bold;
+            }
+            #guess{
+                margin: 15px;
+                height: 40px;
+                width: 100px;
+                background-color: tomato;
+                font-size: 25px;
+                font-weight: bold;
+                border-radius: 15px;
+                text-align: center;
+                cursor: pointer;
+                transition: 0.2s all;
+            }
+            #guess:active{
+                transform: scale(0.98);
+                /*box-shadow: 3px 2px 20px 1px black;*/
+                height: 45px;
+                width: 110px;
+            }
+            #result{
+                font-size: 35px;
+                font-weight: bold;
+                color: brown;
+                text-align: center;
+                
+
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="title">GUESS GAME</h1>
+        <h2>Guess the number between 1 to 100.</h2>
+        <div class="input">
+            <input type="text" id="num" autofocus onfocus="this.value=''"> <br>
+            <button id="guess"  >Guess</button>
+        </div>
+        
+        <p id="result">Guess if you can! ;)</p>
+        <script type="text/javascript">
+            let ranNum = Math.floor((Math.random()*100)+1 );
+            var count = 0;
+            document.getElementById("guess").onclick = function(){
+                
+                var userGuess = "";
+                userGuess = document.getElementById("num").value;
+                
+                console.log(ranNum);
+                if(userGuess == ranNum && count < 10){
+                    document.getElementById("result").innerHTML = "YOOHOO!! You Win in " + count + " atempts";
+                }
+                else if(userGuess > ranNum && count < 10){
+                    document.getElementById("result").innerHTML = "Try smaller number!" ;
+                    
+                    count++;
+                }
+                else if(userGuess < ranNum && count < 10){
+                    document.getElementById("result").innerHTML = "Try a greater number!" ;
+                    count++;
+                }
+                else{
+                    document.getElementById("result").innerHTML = "LOST!!!" ;
+                }
+            }
+        </script>
+    </body>
+</html>
